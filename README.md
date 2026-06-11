@@ -1,29 +1,7 @@
-# Deployment WordPress Enterprise-Ready Berbasis Docker Container
+![Dashboard](docs/dashboard-wordpress.png)
 
-## Kelompok Cloud Computing
+![Container](docs/docker-ps.png)
 
-### Anggota Kelompok
-1.Magdalena Hanung
-2.Patrisiaalvaina Jeo
-3.Anjela Yopamelfa Saghung
-4.Bernadino Julianto Korbrafo
-5.Idha Firasatul Ilma
+![Volume](docs/docker-volume.png)
 
-
-
-## Deskripsi Project
-
-Project ini bertujuan melakukan deployment WordPress menggunakan Docker dengan arsitektur terpisah:
-
-- WordPress Container
-- MariaDB Container
-- Docker Volume
-- Docker Network
-
-## Cara Menjalankan
-
-docker compose up -d
-
-## Akses WordPress
-
-http://localhost:8080
+![Network](docs/docker-network.png)
