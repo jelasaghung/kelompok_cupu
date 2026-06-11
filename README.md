@@ -1,5 +1,7 @@
 ![Dashboard](docs/dashboard-wordpress.png)
 
+![Install](docs/wordpress-install.png)
+
 ![Container](docs/docker-ps.png)
 
 ![Volume](docs/docker-volume.png)
