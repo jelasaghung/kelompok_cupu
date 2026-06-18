@@ -1,8 +1,6 @@
 services:
-
   wordpress:
     image: wordpress:latest
-    container_name: wordpress
     restart: always
     ports:
       - "8080:80"
@@ -13,13 +11,15 @@ services:
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - wp_data:/var/www/html
+    depends_on:
+      - db
+      - redis
     networks:
       - frontend-net
       - backend-net
 
   db:
     image: mariadb:latest
-    container_name: mariadb
     restart: always
     environment:
       MYSQL_DATABASE: wordpress
@@ -31,9 +31,31 @@ services:
     networks:
       - backend-net
 
+  redis:
+    image: redis:latest
+    restart: always
+    networks:
+      - backend-net
+
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    restart: always
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: admin12345
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - backend-net
+
 volumes:
-  db_data:
   wp_data:
+  db_data:
+  minio_data:
 
 networks:
   frontend-net:
