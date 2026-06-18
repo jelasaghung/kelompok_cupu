@@ -1,51 +1,47 @@
-version: '3.9'
-
 services:
+
   wordpress:
     image: wordpress:latest
-    container_name: wordpress-app
     restart: always
     ports:
       - "8080:80"
     environment:
-      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: password123
+      WORDPRESS_DB_PASSWORD: wppass
       WORDPRESS_DB_NAME: wordpress
     volumes:
-      - wordpress_data:/var/www/html
+      - wp_data:/var/www/html
     depends_on:
-      - mariadb
+      - db
       - redis
     networks:
-      - cloud-network
+      - frontend-net
+      - backend-net
 
-  mariadb:
-    image: mariadb:11
-    container_name: wordpress-db
+  db:
+    image: mariadb:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wpuser
-      MYSQL_PASSWORD: password123
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - cloud-network
+      - backend-net
 
   redis:
-    image: redis:7
-    container_name: wordpress-cache
+    image: redis:latest
     restart: always
     networks:
-      - cloud-network
+      - backend-net
 
   minio:
     image: minio/minio
-    container_name: cloud-storage
-    command: server /data --console-address ":9001"
     restart: always
+    command: server /data --console-address ":9001"
     environment:
       MINIO_ROOT_USER: admin
       MINIO_ROOT_PASSWORD: admin12345
@@ -55,13 +51,13 @@ services:
     volumes:
       - minio_data:/data
     networks:
-      - cloud-network
+      - backend-net
 
 volumes:
-  wordpress_data:
+  wp_data:
   db_data:
   minio_data:
 
 networks:
-  cloud-network:
-    driver: bridge
+  frontend-net:
+  backend-net:
