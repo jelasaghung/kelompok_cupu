@@ -18,29 +18,4 @@ MINGGU KE-1
 5. Idha Firasatul Ilma
    - GitHub Repository dan Monitoring
 
-MINGGU KE-2
 
-1. Magdalena Hanung
-   - Membuat dan mengonfigurasi docker-compose.yml.
-   - Mengintegrasikan layanan WordPress, MariaDB, Redis, dan MinIO.
-   - Melakukan commit dan pengelolaan repository GitHub.
-
-2. Patrisia Alvaina Jeo
-   - Menginstal dan mengonfigurasi Redis.
-   - Mengaktifkan Redis Object Cache pada WordPress.
-   - Melakukan pengujian koneksi Redis.
-
-3. Anjela Yopamelfa Saghung
-   - Menginstal dan mengonfigurasi MinIO Object Storage.
-   - Membuat bucket penyimpanan dan mengelola file media.
-   - Menguji penyimpanan file pada Object Storage.
-
-4. Bernadino Julianto Korbrafo
-   - Melakukan pengujian WordPress.
-   - Mengunggah media dan memverifikasi integrasi layanan.
-   - Membantu troubleshooting dan debugging sistem.
-
-5. Idha Firasatul Ilma
-   - Menyusun dokumentasi proyek.
-   - Mengumpulkan screenshot bukti implementasi.
-   - Menyusun laporan dan dokumentasi kontribusi anggota.
